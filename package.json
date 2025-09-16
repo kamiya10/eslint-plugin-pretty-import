@@ -1,0 +1,65 @@
+{
+  "name": "@kamiya4047/eslint-plugin-pretty-import",
+  "version": "0.0.1",
+  "description": "ESLint plugin for sorting and organizing ES module imports",
+  "main": "dist/index.js",
+  "type": "module",
+  "files": [
+    "dist/",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kamiya10/eslint-plugin-pretty-import.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kamiya10/eslint-plugin-pretty-import/issues"
+  },
+  "homepage": "https://github.com/kamiya10/eslint-plugin-pretty-import#readme",
+  "license": "GPL-3.0",
+  "publishConfig": {
+    "@kamiya4047:registry": "https://npm.pkg.github.com"
+  },
+  "keywords": [
+    "eslint",
+    "eslint-plugin",
+    "import",
+    "sort",
+    "organize"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "test": "bun test test/",
+    "test:watch": "bun test test/ --watch",
+    "dev": "bun --watch src/index.ts",
+    "docs": "echo 'Documentation available in docs/ folder'",
+    "prepublishOnly": "bun run build && bun test",
+    "release": "npm version patch && git push && git push --tags",
+    "release:minor": "npm version minor && git push && git push --tags",
+    "release:major": "npm version major && git push && git push --tags"
+  },
+  "devDependencies": {
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-typescript": "^12.1.1",
+    "@stylistic/eslint-plugin": "^5.3.1",
+    "@types/bun": "latest",
+    "@types/eslint": "^9",
+    "@types/estree": "^1.0.8",
+    "@typescript-eslint/parser": "^8.44.0",
+    "@typescript-eslint/utils": "^8.44.0",
+    "eslint": "^9",
+    "eslint-plugin-eslint-plugin": "^7.0.0",
+    "jiti": "^2.5.1",
+    "rollup": "^4.24.4",
+    "tslib": "^2.8.1",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.44.0"
+  },
+  "peerDependencies": {
+    "eslint": "^8.0.0 || ^9.0.0",
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@typescript-eslint/types": "^8.44.0"
+  }
+}
