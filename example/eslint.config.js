@@ -7,25 +7,12 @@ export default [
       'pretty-import': prettyImport
     },
     rules: {
-      'pretty-import/sort-imports': 'error',
-      'pretty-import/separate-type-imports': 'error'
-    }
-  },
-  
-  prettyImport.configs.recommended,
-  
-  {
-    files: ['src/**/*.{ts,tsx}'],
-    plugins: {
-      'pretty-import': prettyImport
-    },
-    rules: {
-      'pretty-import/sort-imports': ['error', {
+      'pretty-import/sort-import-groups': ['error', {
         localPatterns: ['@/', '~/', '#/'],
-        builtinModulePrefixes: ['node:', 'bun:', 'deno:'],
-        enforceBlankLines: true,
-        separateTypeImports: true
+        groupStyleImports: true,
+        builtinModulePrefixes: ['node:', 'bun:', 'deno:']
       }],
+      'pretty-import/sort-import-names': 'error',
       'pretty-import/separate-type-imports': 'error'
     }
   }
