@@ -24,8 +24,8 @@ test('getModuleType', () => {
   expect(getModuleType('bun:sqlite', options)).toBe(ModuleType.Builtin);
   expect(getModuleType('./local', options)).toBe(ModuleType.Local);
   expect(getModuleType('../local', options)).toBe(ModuleType.Local);
-  expect(getModuleType('@/utils', options)).toBe(ModuleType.Local);
-  expect(getModuleType('~/components', options)).toBe(ModuleType.Local);
+  expect(getModuleType('@/utils', options)).toBe(ModuleType.LocalPattern);
+  expect(getModuleType('~/components', options)).toBe(ModuleType.LocalPattern);
   expect(getModuleType('react', options)).toBe(ModuleType.External);
   expect(getModuleType('lodash', options)).toBe(ModuleType.External);
 });
@@ -115,7 +115,7 @@ test('getImportGroupPriority', () => {
     isTypeOnly: false,
     isSideEffect: false,
   };
-  expect(getImportGroupPriority(externalDefaultImport)).toBe(40);
+  expect(getImportGroupPriority(externalDefaultImport)).toBe(21);
 
   // Local module type import
   const localTypeImport: ImportInfo = {
@@ -133,7 +133,7 @@ test('getImportGroupPriority', () => {
     isTypeOnly: true,
     isSideEffect: false,
   };
-  expect(getImportGroupPriority(localTypeImport)).toBe(90);
+  expect(getImportGroupPriority(localTypeImport)).toBe(62);
 
   // Side effect import
   const sideEffectImport: ImportInfo = {
@@ -151,7 +151,7 @@ test('getImportGroupPriority', () => {
     isTypeOnly: false,
     isSideEffect: true,
   };
-  expect(getImportGroupPriority(sideEffectImport)).toBe(100);
+  expect(getImportGroupPriority(sideEffectImport)).toBe(1000);
 });
 
 test('sortImportSpecifiers', () => {

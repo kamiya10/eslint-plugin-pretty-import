@@ -12,8 +12,6 @@ const ruleTester = new RuleTester({
     parserOptions: {
       ecmaVersion: 2022,
       sourceType: 'module',
-      projectService: true,
-      tsconfigRootDir: import.meta.dirname,
     },
   },
 });
@@ -21,7 +19,7 @@ const ruleTester = new RuleTester({
 test('separate-type-imports rule', () => {
   ruleTester.run('separate-type-imports', rule, {
     valid: [
-      // 已經分離的類型導入
+      // Already separated type imports
       {
         code: `
 import React from 'react';
@@ -29,14 +27,14 @@ import type { ComponentProps } from 'react';
         `,
       },
 
-      // 純值導入
+      // Pure value imports
       {
         code: `
 import { useState, useEffect } from 'react';
         `,
       },
 
-      // 純類型導入
+      // Pure type imports
       {
         code: `
 import type { User, Profile } from './types';
@@ -45,7 +43,7 @@ import type { User, Profile } from './types';
     ],
 
     invalid: [
-      // 內聯類型導入（僅類型）
+      // Inline type imports (types only)
       {
         code: `
 import { type User, type Profile } from './types';
@@ -56,7 +54,7 @@ import type { User, Profile } from './types';
         `,
       },
 
-      // 混合導入
+      // Mixed imports
       {
         code: `
 import { useState, type ComponentProps, useEffect } from 'react';
@@ -68,7 +66,7 @@ import { useState, useEffect } from 'react';
         `,
       },
 
-      // 複雜混合導入（包含默認導入）
+      // Complex mixed imports (with default import)
       {
         code: `
 import React, { useState, type ComponentProps, useEffect } from 'react';
@@ -80,7 +78,7 @@ import React, { useState, useEffect } from 'react';
         `,
       },
 
-      // 混合導入（包含命名空間導入）
+      // Mixed imports (with namespace import)
       {
         code: `
 import { type ComponentProps, useState } from 'react';
@@ -92,7 +90,7 @@ import { useState } from 'react';
         `,
       },
 
-      // 多個類型導入與值導入混合
+      // Multiple type imports mixed with value imports
       {
         code: `
 import { type User, type Profile, getName, type Settings, getAge } from './utils';
@@ -104,7 +102,7 @@ import { getName, getAge } from './utils';
         `,
       },
 
-      // 帶別名的類型導入
+      // Type imports with aliases
       {
         code: `
 import { type User as UserType, getName } from './utils';
