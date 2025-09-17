@@ -1,6 +1,6 @@
 # ESLint Plugin Pretty Import
 
-[![Build](https://github.com/kamiya4047/eslint-plugin-pretty-import/actions/workflows/build.yml/badge.svg)](https://github.com/kamiya4047/eslint-plugin-pretty-import/actions/workflows/build.yml)
+![Build](https://github.com/kamiya4047/eslint-plugin-pretty-import/actions/workflows/build.yml/badge.svg)
 ![GitHub
 License](https://img.shields.io/github/license/kamiya4047/eslint-plugin-pretty-import)
 ![NPM
@@ -247,7 +247,7 @@ of files, certain patterns just started to *feel* right:
   when sorted by count: `{a, b, c, d, e}` before `{z}`
 - **CSS at the bottom** - Styles are makeup, logic is bone structure. Bone
   structure first
-- **Rivers preserve flow** - Side effects maintain their original position to
+- **Preserve flow** - Side effects maintain their original position to
   preserve JavaScript execution order
 
 Is this objectively correct? No. Is this how imports look best to me?
@@ -258,9 +258,9 @@ Absolutely.
 ### Sorting Process
 
 1. **Group CSS** - Move all CSS imports to the bottom
-2. **Split by rivers** - JavaScript side effects create section boundaries
+2. **Split by side effects** - JavaScript side effects create section boundaries
 3. **Sort sections** - Apply 6-group hierarchy to each section
-4. **Reconstruct** - Reassemble with rivers preserved and CSS at bottom
+4. **Reconstruct** - Reassemble with side effects preserved and CSS at bottom
 
 ## Why This Specific Order Though?
 
@@ -280,9 +280,9 @@ at the bottom while preserving their relative order.
 > This could totally break your styles if you depend on CSS load order.
 > But most projects don't, so... 🤷
 
-### More Imports = More Important
+### Triangle Shape
 
-When sorted by import count, it creates a satisfying visual triangle shape:
+When first sorted by import count, it creates a satisfying visual triangle shape:
 
 ```javascript
 import { useEffect, useMemo, useRef, useState } from 'react';
@@ -291,9 +291,6 @@ import { create, useStore } from 'zustand'
 import { type } from 'arktype';
 import dayjs from 'dayjs';
 ```
-
-This triangle pattern just *feels* right – more important imports get visual
-priority.
 
 ## Compatibility
 
@@ -319,8 +316,8 @@ bun run lint
 
 ## Contributing
 
-Contributions are welcome! Please read our [Contributing
-Guide](.github/CONTRIBUTING.md) for details.
+Contributions are welcome! Please read our
+[Contributing Guide](.github/CONTRIBUTING.md) for details.
 
 ## License
 
@@ -331,10 +328,8 @@ License can be found at [LICENSE](LICENSE).
 - [Documentation](docs/README.md)
 - [Changelog](CHANGELOG.md)
 - [GitHub Repository](https://github.com/kamiya4047/eslint-plugin-pretty-import)
-- [NPM
-  Package](https://www.npmjs.com/package/@kamiya4047/eslint-plugin-pretty-import)
-- [GitHub
-  Packages](https://github.com/kamiya4047/eslint-plugin-pretty-import/pkgs/npm/eslint-plugin-pretty-import)
+- [NPM Package](https://www.npmjs.com/package/@kamiya4047/eslint-plugin-pretty-import)
+- [GitHub Packages](https://github.com/kamiya4047/eslint-plugin-pretty-import/pkgs/npm/eslint-plugin-pretty-import)
 
 ## Support
 
@@ -342,9 +337,6 @@ If you find this plugin useful, consider supporting its development:
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/kamiya4047)
 
-[`sort-import-groups`]:
-    https://github.com/kamiya4047/eslint-plugin-pretty-import/blob/main/docs/rules/sort-import-groups.md
-[`sort-import-names`]:
-    https://github.com/kamiya4047/eslint-plugin-pretty-import/blob/main/docs/rules/sort-import-names.md
-[`separate-type-imports`]:
-    https://github.com/kamiya4047/eslint-plugin-pretty-import/blob/main/docs/rules/separate-type-imports.md
+[`sort-import-groups`]: https://github.com/kamiya4047/eslint-plugin-pretty-import/blob/main/docs/rules/sort-import-groups.md
+[`sort-import-names`]: https://github.com/kamiya4047/eslint-plugin-pretty-import/blob/main/docs/rules/sort-import-names.md
+[`separate-type-imports`]: https://github.com/kamiya4047/eslint-plugin-pretty-import/blob/main/docs/rules/separate-type-imports.md
