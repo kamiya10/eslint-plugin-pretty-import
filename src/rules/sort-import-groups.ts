@@ -126,7 +126,7 @@ export const sortImportGroups: Rule.RuleModule = {
           sections.push(currentSection);
         }
 
-        // Add type imports as a separate section at the bottom, before CSS
+        // Type imports
         if (typeImports.length > 0) {
           const typeGroups = groupImports(typeImports);
           const sortedTypeImports: ImportInfo[] = [];
@@ -138,9 +138,9 @@ export const sortImportGroups: Rule.RuleModule = {
           sections.push(sortedTypeImports);
         }
 
+        // CSS imports
         if (options.groupStyleImports && cssImports.length > 0) {
-          const sortedCssImports = [...cssImports].sort((a, b) => a.sortKey.localeCompare(b.sortKey));
-          sections.push(sortedCssImports);
+          sections.push(cssImports);
         }
 
         let needsReordering = false;

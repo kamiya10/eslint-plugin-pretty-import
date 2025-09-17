@@ -43,6 +43,6 @@ import type { ParsedUrlQuery } from 'querystring';
 import type { RequestPayload, ResponseData } from '@/lib/api';
 import type { User, UserProfile } from '@/lib/api/users';
 
-import './styles/components.css';
-import './styles/fonts.css';
 import './styles/global.css';
+import './styles/fonts.css';
+import './styles/components.css';
