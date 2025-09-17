@@ -29,7 +29,12 @@
       ]
     }
   },
+  "include": [
+    "src/**/*.ts",
+    "*.config.ts"
+  ],
   "exclude": [
-    "**/example/*"
+    "node_modules",
+    "dist"
   ]
 }

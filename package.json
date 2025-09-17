@@ -1,7 +1,7 @@
 {
   "name": "@kamiya4047/eslint-plugin-pretty-import",
   "version": "0.0.1",
-  "description": "ESLint plugin for sorting and organizing ES module imports",
+  "description": "ESLint plugin for sorting imports in a biased order",
   "main": "dist/index.js",
   "type": "module",
   "files": [
@@ -10,12 +10,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/kamiya10/eslint-plugin-pretty-import.git"
+    "url": "git+https://github.com/kamiya4047/eslint-plugin-pretty-import.git"
   },
   "bugs": {
-    "url": "https://github.com/kamiya10/eslint-plugin-pretty-import/issues"
+    "url": "https://github.com/kamiya4047/eslint-plugin-pretty-import/issues"
   },
-  "homepage": "https://github.com/kamiya10/eslint-plugin-pretty-import#readme",
+  "homepage": "https://github.com/kamiya4047/eslint-plugin-pretty-import#readme",
   "license": "GPL-3.0",
   "publishConfig": {
     "@kamiya4047:registry": "https://npm.pkg.github.com"
@@ -31,6 +31,8 @@
     "build": "rollup -c",
     "test": "bun test test/",
     "test:watch": "bun test test/ --watch",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "dev": "bun --watch src/index.ts",
     "docs": "echo 'Documentation available in docs/ folder'",
     "prepublishOnly": "bun run build && bun test",

@@ -1,6 +1,6 @@
 # sort-import-groups
 
-Groups and sorts imports with CSS extraction to the bottom.
+Groups and sorts imports with CSS grouping at the bottom.
 
 ## Rule Details
 
@@ -13,7 +13,7 @@ This rule enforces a specific 6-group hierarchy for organizing imports:
 5. **Namespace** - `import * as`
 6. **Types** - `import type`
 
-Additionally, it extracts CSS imports (`.css`, `.scss`, `.sass`, `.less`) and
+Additionally, it groups CSS imports (`.css`, `.scss`, `.sass`, `.less`) and
 places them at the bottom, as CSS doesn't affect JavaScript code logic.
 
 JavaScript side effects (`import 'polyfill'`) act as "rivers" that maintain
@@ -26,7 +26,7 @@ their original positions and separate import sections.
   // Path aliases (default: [])
   localPatterns: string[];
   
-  // Extract CSS to bottom (default: true)
+  // Group CSS at bottom (default: true)
   groupStyleImports: boolean;
   
   // Built-in prefixes (default: ['node:', 'bun:'])
@@ -124,6 +124,8 @@ This rule is designed to work with:
 Use all three rules together for complete import organization:
 
 ```js
+import prettyImport from '@kamiya4047/eslint-plugin-pretty-import';
+
 export default [
   {
     plugins: { 'pretty-import': prettyImport },

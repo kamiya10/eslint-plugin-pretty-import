@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Updated package scope and username
+
 ## [0.0.1] - 2025-09-16
 
 ### Added
@@ -15,7 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `sort-import-groups` rule with opinionated 6-group hierarchy
 - `sort-import-names` rule for alphabetical sorting within import statements
 - `separate-type-imports` rule for TypeScript type import separation
-- CSS extraction functionality (moves CSS imports to bottom)
+- CSS grouping functionality (moves CSS imports to bottom)
 - River-based side effects preservation
 - Count-based import sorting (more imports get priority)
 - Character priority sorting (special chars → UPPERCASE → lowercase)
@@ -26,12 +30,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Features
 
 - Opinionated import organization with 6 distinct groups
-- CSS import extraction with configurable grouping
+- CSS import grouping with configurable organization
 - JavaScript side effect preservation ("river system")
 - TypeScript support with proper type import handling
 - Configurable local path patterns
 - Case-sensitive and case-insensitive sorting options
 - Auto-fixable rules for seamless integration
 
-[unreleased]: https://github.com/kamiya10/eslint-plugin-pretty-import/compare/v0.0.1...HEAD
-[0.0.1]: https://github.com/kamiya10/eslint-plugin-pretty-import/releases/tag/v0.0.1
+[unreleased]: https://github.com/kamiya4047/eslint-plugin-pretty-import/compare/v0.0.1...HEAD
+[0.0.1]: https://github.com/kamiya4047/eslint-plugin-pretty-import/releases/tag/v0.0.1

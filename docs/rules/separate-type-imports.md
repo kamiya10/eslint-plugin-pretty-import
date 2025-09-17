@@ -186,31 +186,62 @@ Consider disabling this rule if:
   imports
 - **Migration Overhead**: The codebase is too large to migrate all at once
 
-## Compatibility Requirements
+## TypeScript Configuration
+
+### Compatibility Requirements
 
 - **TypeScript**: Version 3.8 or higher (for `import type` syntax support)
 - **Parser**: Requires `@typescript-eslint/parser` for TypeScript parsing
-- **ESLint**: Compatible with ESLint v8.0.0 or higher
-- **Build Tools**: Works with all major bundlers (Webpack, Rollup, Vite, etc.)
 
-## Integration with Other Rules
+### ESLint Configuration
 
-### Complementary Rules
+To use this rule, you must configure ESLint to use the TypeScript parser. For
+more information about setting up typed linting, see the [TypeScript ESLint
+documentation](https://typescript-eslint.io/getting-started/typed-linting).
 
-- [`sort-imports`](./sort-imports.md) - Organizes all imports including
-  separated type imports
-- `@typescript-eslint/no-unused-vars` - Helps identify unused type imports
-- `@typescript-eslint/explicit-module-boundary-types` - Works well with clear
-  type separation
+```javascript
+// eslint.config.js
+import prettyImport from '@kamiya4047/eslint-plugin-pretty-import';
+import tsParser from '@typescript-eslint/parser';
 
-### Alternative Rules
+export default [
+  {
+    files: ['**/*.ts', '**/*.tsx'],
+    languageOptions: {
+      parser: tsParser,
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir: import.meta.dirname,
+      },
+    },
+    plugins: {
+      'pretty-import': prettyImport
+    },
+    rules: {
+      'pretty-import/separate-type-imports': 'error'
+    }
+  }
+];
+```
 
-- `@typescript-eslint/consistent-type-imports` - Similar functionality with
-  different configuration options
-- `@typescript-eslint/prefer-type-imports` - Another approach to type import
-  management
+For legacy `.eslintrc` configuration:
 
-## TypeScript Configuration
+```json
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module",
+    "project": "./tsconfig.json"
+  },
+  "plugins": ["@kamiya4047/pretty-import"],
+  "rules": {
+    "pretty-import/separate-type-imports": "error"
+  }
+}
+```
+
+### TypeScript Compiler Options
 
 For optimal results, consider these TypeScript compiler options:
 

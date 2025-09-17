@@ -7,7 +7,7 @@ exactly how I want them.
 ## Features
 
 - **Opinionated 6-Group Hierarchy** - My preferred way of organizing imports
-- **CSS Extraction** - Moves CSS to bottom (⚠️ might break your styles!)
+- **CSS Groups** - Moves CSS to bottom (⚠️ might break your styles!)
 - **River-Based Side Effects** - Preserves JS execution order (the only
   non-negotiable part)
 - **Count-Based Sorting** - Busier imports get priority (weird, but I like it)
@@ -16,20 +16,18 @@ exactly how I want them.
 
 ## Why This Plugin Exists
 
-I've tried *so many* import sorting plugins. Like, seriously, a lot. And every
-single one had that *one thing* that drove me crazy. Wrong group order. CSS
-mixed with JavaScript. Side effects jumping around. Or sorting rules that
-just... didn't look right.
+I've tried a lot of import sorting plugins and none of them fit my preference.
 
 So I built my own. This plugin is **unapologetically opinionated** – it sorts
 imports exactly the way I think they should look after years of staring at code.
 It's not based on any standard or committee decision. It's based on what makes
 my brain happy when I open a file.
 
-**Warning**: This plugin might break your project. It moves CSS imports to the
-bottom which could affect load order. It uses non-standard sorting that your
-team might hate. It's definitely not for everyone. Actually, it's probably just
-for me and the three other people who think like me.
+> [!WARNING]
+> This plugin might break your project. It moves CSS imports to the
+> bottom which could affect load order. It uses non-standard sorting that your
+> team might hate. It's definitely not for everyone. Actually, it's probably just
+> for me and the three other people who think like me.
 
 You might hate it. That's cool! But if you've also been searching for that *just
 right* import order, maybe we share the same aesthetic.
@@ -39,24 +37,24 @@ right* import order, maybe we share the same aesthetic.
 ### Installation
 
 ```bash
-npm install --save-dev @exptech/eslint-plugin-pretty-import
+npm install --save-dev @kamiya4047/eslint-plugin-pretty-import
 # or
-yarn add --dev @exptech/eslint-plugin-pretty-import
+yarn add --dev @kamiya4047/eslint-plugin-pretty-import
 # or
-bun add --dev @exptech/eslint-plugin-pretty-import
+bun add --dev @kamiya4047/eslint-plugin-pretty-import
 ```
 
 From GitHub Packages:
 
 ```bash
-npm install --save-dev @exptech/eslint-plugin-pretty-import --registry=https://npm.pkg.github.com
+npm install --save-dev @kamiya4047/eslint-plugin-pretty-import --registry=https://npm.pkg.github.com
 ```
 
 ### Basic Configuration
 
 ```js
 // eslint.config.js
-import prettyImport from '@exptech/eslint-plugin-pretty-import';
+import prettyImport from '@kamiya4047/eslint-plugin-pretty-import';
 
 export default [
   {
@@ -77,7 +75,7 @@ export default [
 
 ```js
 // eslint.config.js
-import prettyImport from '@exptech/eslint-plugin-pretty-import';
+import prettyImport from '@kamiya4047/eslint-plugin-pretty-import';
 
 export default [
   // Recommended (warn severity for sorting rules)
@@ -92,7 +90,7 @@ export default [
 
 | Rule | Description | Fixable |
 |------|-------------|---------|
-| [`sort-import-groups`](#rule-sort-import-groups) | Groups and sorts imports with CSS extraction | ✅ |
+| [`sort-import-groups`](#rule-sort-import-groups) | Groups and sorts imports with CSS grouping | ✅ |
 | [`sort-import-names`](#rule-sort-import-names) | Sorts named imports within import statements | ✅ |
 | [`separate-type-imports`](#rule-separate-type-imports) | Enforces separate `import type` declarations | ✅ |
 
@@ -111,7 +109,7 @@ The main rule for organizing imports into groups and sorts them.
   // Path aliases like ['@/', '~/']
   localPatterns: string[];
   
-  // Extract CSS to bottom (default: true)
+  // Group CSS at bottom (default: true)
   groupStyleImports: boolean;
   
   // Built-in prefixes (default: ['node:', 'bun:'])
@@ -188,7 +186,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { z } from 'zod';
 ```
 
-### River System with CSS Extraction
+### River System with CSS Grouping
 
 ```typescript
 // Original
@@ -288,7 +286,7 @@ Absolutely.
 
 ### Sorting Process
 
-1. **Extract CSS** - Remove all CSS imports from the flow
+1. **Group CSS** - Move all CSS imports to the bottom
 2. **Split by rivers** - JavaScript side effects create section boundaries
 3. **Sort sections** - Apply 6-group hierarchy to each section
 4. **Reconstruct** - Reassemble with rivers preserved and CSS at bottom
@@ -355,7 +353,7 @@ License can be found at [LICENSE].
 
 - [Documentation](docs/README.md)
 - [Changelog](CHANGELOG.md)
-- [GitHub Repository](https://github.com/kamiya10/eslint-plugin-pretty-import)
+- [GitHub Repository](https://github.com/kamiya4047/eslint-plugin-pretty-import)
 - [NPM Package](https://www.npmjs.com/package/@kamiya4047/eslint-plugin-pretty-import)
 - [GitHub Packages](https://github.com/kamiya4047/eslint-plugin-pretty-import/pkgs/npm/eslint-plugin-pretty-import)
 

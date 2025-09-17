@@ -9,9 +9,17 @@ import tsParser from '@typescript-eslint/parser';
 import prettyImport from './src/index';
 
 export default defineConfig(
+  // Global ignores
   {
-    files: ['**/*.{ts,tsx,cts,mts}'],
-    ignores: ['example', 'dist', 'node_modules'],
+    ignores: ['dist/**', 'node_modules/**', 'example/**', 'test/**', '*.js'],
+  },
+  // Global files pattern
+  {
+    files: ['src/**/*.ts', '*.config.ts'],
+  },
+  // TypeScript parser configuration
+  {
+    files: ['src/**/*.ts', '*.config.ts'],
     languageOptions: {
       parser: tsParser,
       parserOptions: {

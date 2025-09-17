@@ -8,7 +8,7 @@ This directory contains comprehensive documentation for all rules provided by
 ### Import Organization
 
 - [`sort-import-groups`](./rules/sort-import-groups.md) - Groups and sorts
-  imports with CSS extraction
+  imports with CSS grouping
 - [`sort-import-names`](./rules/sort-import-names.md) - Sorts named imports
   within import statements
 - [`separate-type-imports`](./rules/separate-type-imports.md) - Enforces
@@ -18,7 +18,7 @@ This directory contains comprehensive documentation for all rules provided by
 
 | Rule | Description | Auto-fixable | Default Severity |
 |------|-------------|--------------|------------------|
-| [`sort-import-groups`](./rules/sort-import-groups.md) | Groups and sorts imports with CSS extraction | ✅ | `error` |
+| [`sort-import-groups`](./rules/sort-import-groups.md) | Groups and sorts imports with CSS grouping | ✅ | `error` |
 | [`sort-import-names`](./rules/sort-import-names.md) | Sorts named imports within import statements | ✅ | `error` |
 | [`separate-type-imports`](./rules/separate-type-imports.md) | Enforces separate `import type` declarations | ✅ | `error` |
 
@@ -28,7 +28,7 @@ This directory contains comprehensive documentation for all rules provided by
 
 ```js
 // eslint.config.js
-import prettyImport from 'eslint-plugin-pretty-import';
+import prettyImport from '@kamiya4047/eslint-plugin-pretty-import';
 
 export default [
   {
@@ -48,7 +48,7 @@ export default [
 
 ```js
 // eslint.config.js
-import prettyImport from 'eslint-plugin-pretty-import';
+import prettyImport from '@kamiya4047/eslint-plugin-pretty-import';
 
 export default [
   // Recommended: warn severity for sorting rules
@@ -63,7 +63,7 @@ export default [
 
 ```js
 // eslint.config.js
-import prettyImport from 'eslint-plugin-pretty-import';
+import prettyImport from '@kamiya4047/eslint-plugin-pretty-import';
 
 export default [
   {
@@ -109,7 +109,7 @@ For TypeScript projects, ensure you're using the TypeScript ESLint parser:
 
 ```js
 // eslint.config.js
-import prettyImport from 'eslint-plugin-pretty-import';
+import prettyImport from '@kamiya4047/eslint-plugin-pretty-import';
 import tsParser from '@typescript-eslint/parser';
 
 export default [
