@@ -163,7 +163,3 @@ import type { ComponentProps } from 'react';
 - If you prefer a different sorting order (e.g., by usage frequency)
 - If you want to maintain manual import organization  
 - If you're using other import sorting tools that conflict
-
-## Version
-
-This rule was introduced in v2.0.0 as part of the modular rule architecture.

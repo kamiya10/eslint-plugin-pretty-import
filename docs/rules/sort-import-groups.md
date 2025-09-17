@@ -148,7 +148,3 @@ export default [
 - If your project depends on CSS load order
 - If you prefer different import grouping conventions
 - If you want to keep CSS imports in their original positions
-
-## Version
-
-This rule was introduced in v2.0.0 as part of the modular rule architecture.
