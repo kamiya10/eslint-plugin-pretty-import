@@ -23,6 +23,7 @@ const plugin = {
 
 Object.assign(plugin.configs, {
   warn: {
+    name: 'pretty-import/warn',
     plugins: {
       'pretty-import': plugin,
     },
@@ -37,6 +38,7 @@ Object.assign(plugin.configs, {
     },
   },
   error: {
+    name: 'pretty-import/error',
     plugins: {
       'pretty-import': plugin,
     },
@@ -52,6 +54,6 @@ Object.assign(plugin.configs, {
       }],
     },
   },
-});
+} as Record<'warn' | 'error', Linter.Config>);
 
 export default plugin;

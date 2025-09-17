@@ -7,7 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.0.4] - 2025-09-17
+## [0.1.1] - 2025-09-17
+
+### Added
+
+- Added names to shared config presets.
+
+## [0.1.0] - 2025-09-17
 
 ### Added
 
@@ -56,8 +62,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Case-sensitive and case-insensitive sorting options
 - Auto-fixable rules for seamless integration
 
-[unreleased]: https://github.com/kamiya4047/eslint-plugin-pretty-import/compare/v0.0.4...HEAD
-[0.0.4]: https://github.com/kamiya4047/eslint-plugin-pretty-import/releases/tag/v0.0.4
+[unreleased]: https://github.com/kamiya4047/eslint-plugin-pretty-import/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/kamiya4047/eslint-plugin-pretty-import/releases/tag/v0.1.1
+[0.1.0]: https://github.com/kamiya4047/eslint-plugin-pretty-import/releases/tag/v0.1.0
 [0.0.3]: https://github.com/kamiya4047/eslint-plugin-pretty-import/releases/tag/v0.0.3
 [0.0.2]: https://github.com/kamiya4047/eslint-plugin-pretty-import/releases/tag/v0.0.2
 [0.0.1]: https://github.com/kamiya4047/eslint-plugin-pretty-import/releases/tag/v0.0.1
