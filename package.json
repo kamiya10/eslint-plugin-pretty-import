@@ -18,7 +18,8 @@
   "homepage": "https://github.com/kamiya4047/eslint-plugin-pretty-import#readme",
   "license": "GPL-3.0",
   "publishConfig": {
-    "@kamiya4047:registry": "https://npm.pkg.github.com"
+    "@kamiya4047:registry": "https://npm.pkg.github.com",
+    "provenance": true
   },
   "keywords": [
     "eslint",

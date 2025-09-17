@@ -7,7 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.0.2]
+## [0.0.3] - 2025-09-17
+
+### Added
+
+- Added publish to npm registry in workflow file
+
+## [0.0.2] - 2025-09-17
 
 ### Changed
 
@@ -39,6 +45,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Case-sensitive and case-insensitive sorting options
 - Auto-fixable rules for seamless integration
 
-[unreleased]: https://github.com/kamiya4047/eslint-plugin-pretty-import/compare/v0.0.2...HEAD
+[unreleased]: https://github.com/kamiya4047/eslint-plugin-pretty-import/compare/v0.0.3...HEAD
+[0.0.3]: https://github.com/kamiya4047/eslint-plugin-pretty-import/releases/tag/v0.0.3
 [0.0.2]: https://github.com/kamiya4047/eslint-plugin-pretty-import/releases/tag/v0.0.2
 [0.0.1]: https://github.com/kamiya4047/eslint-plugin-pretty-import/releases/tag/v0.0.1
