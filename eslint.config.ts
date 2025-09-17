@@ -11,15 +11,15 @@ import prettyImport from './src/index';
 export default defineConfig(
   // Global ignores
   {
-    ignores: ['dist/**', 'node_modules/**', 'example/**', 'test/**', '*.js'],
+    ignores: ['dist/**', 'node_modules/**', 'example/**', '*.js'],
   },
   // Global files pattern
   {
-    files: ['src/**/*.ts', '*.config.ts'],
+    files: ['src/**/*.ts', 'test/**/*.ts', '*.config.ts'],
   },
   // TypeScript parser configuration
   {
-    files: ['src/**/*.ts', '*.config.ts'],
+    files: ['src/**/*.ts', 'test/**/*.ts', '*.config.ts'],
     languageOptions: {
       parser: tsParser,
       parserOptions: {

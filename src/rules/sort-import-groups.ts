@@ -87,20 +87,23 @@ export const sortImportGroups: Rule.RuleModule = {
 
         const cssExtensions = ['.css', '.scss', '.sass', '.less'];
         const cssImports: ImportInfo[] = [];
+        const typeImports: ImportInfo[] = [];
         const nonCssImports: ImportInfo[] = [];
 
-        if (options.groupStyleImports) {
-          for (const importInfo of importInfos) {
-            if (importInfo.isSideEffect && cssExtensions.some((ext) => importInfo.source.endsWith(ext))) {
-              cssImports.push(importInfo);
-            }
-            else {
-              nonCssImports.push(importInfo);
-            }
+        // Separate imports into three categories: regular, type, and CSS
+        for (const importInfo of importInfos) {
+          const isTypeImport = importInfo.isTypeOnly;
+          const isCssImport = options.groupStyleImports && importInfo.isSideEffect && cssExtensions.some((ext) => importInfo.source.endsWith(ext));
+
+          if (isTypeImport) {
+            typeImports.push(importInfo);
           }
-        }
-        else {
-          nonCssImports.push(...importInfos);
+          else if (isCssImport) {
+            cssImports.push(importInfo);
+          }
+          else {
+            nonCssImports.push(importInfo);
+          }
         }
 
         const sections: ImportInfo[][] = [];
@@ -121,6 +124,18 @@ export const sortImportGroups: Rule.RuleModule = {
 
         if (currentSection.length > 0) {
           sections.push(currentSection);
+        }
+
+        // Add type imports as a separate section at the bottom, before CSS
+        if (typeImports.length > 0) {
+          const typeGroups = groupImports(typeImports);
+          const sortedTypeImports: ImportInfo[] = [];
+
+          for (const group of typeGroups) {
+            sortedTypeImports.push(...group.imports);
+          }
+
+          sections.push(sortedTypeImports);
         }
 
         if (options.groupStyleImports && cssImports.length > 0) {
@@ -279,6 +294,26 @@ export const sortImportGroups: Rule.RuleModule = {
 
                   for (const cssImport of section) {
                     result.push(formatImportStatement(cssImport));
+                  }
+                }
+                else if (section.length > 0 && section.every((imp) => imp.isTypeOnly)) {
+                  // Type imports section
+                  if (sectionIndex > 0 && result.length > 0) {
+                    result.push('');
+                  }
+
+                  const groups = groupImports(section);
+                  for (let groupIndex = 0; groupIndex < groups.length; groupIndex++) {
+                    const group = groups[groupIndex];
+                    if (!group) continue;
+
+                    if (groupIndex > 0) {
+                      result.push('');
+                    }
+
+                    for (const importInfo of group.imports) {
+                      result.push(formatImportStatement(importInfo));
+                    }
                   }
                 }
                 else {

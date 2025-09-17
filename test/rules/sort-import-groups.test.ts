@@ -52,6 +52,57 @@ import { readFile } from 'node:fs';
 import React from 'react';
         `.trim(),
       },
+
+      // Type imports should be grouped at the bottom regardless of module type
+      {
+        code: `
+import type { ReactNode } from 'react';
+import { useState } from 'react';
+import type { Config } from './config';
+        `.trim(),
+        errors: [{ messageId: 'importGroupsNotSorted' }],
+        output: `
+import { useState } from 'react';
+
+import type { ReactNode } from 'react';
+
+import type { Config } from './config';
+        `.trim(),
+      },
+
+      // Type imports should be at bottom even with side effects in between
+      {
+        code: `
+import type { User } from './types';
+import 'polyfill';
+import React from 'react';
+        `.trim(),
+        errors: [{ messageId: 'importGroupsNotSorted' }],
+        output: `
+import 'polyfill';
+
+import React from 'react';
+
+import type { User } from './types';
+        `.trim(),
+      },
+
+      // Type imports grouped at bottom, CSS at very bottom
+      {
+        code: `
+import type { Theme } from './theme';
+import React from 'react';
+import './styles.css';
+        `.trim(),
+        errors: [{ messageId: 'importGroupsNotSorted' }],
+        output: `
+import React from 'react';
+
+import type { Theme } from './theme';
+
+import './styles.css';
+        `.trim(),
+      },
     ],
   });
 });

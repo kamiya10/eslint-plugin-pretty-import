@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.4] - 2025-09-17
+
+### Fixed
+
+- Type imports are now excluded from side effect boundaries and sorted independently
+- Type imports maintain their own grouping section separate from runtime imports
+
 ## [0.1.1] - 2025-09-17
 
 ### Added
@@ -62,7 +69,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Case-sensitive and case-insensitive sorting options
 - Auto-fixable rules for seamless integration
 
-[unreleased]: https://github.com/kamiya4047/eslint-plugin-pretty-import/compare/v0.1.1...HEAD
+[unreleased]: https://github.com/kamiya4047/eslint-plugin-pretty-import/compare/v0.1.4...HEAD
+[0.1.4]: https://github.com/kamiya4047/eslint-plugin-pretty-import/releases/tag/v0.1.4
 [0.1.1]: https://github.com/kamiya4047/eslint-plugin-pretty-import/releases/tag/v0.1.1
 [0.1.0]: https://github.com/kamiya4047/eslint-plugin-pretty-import/releases/tag/v0.1.0
 [0.0.3]: https://github.com/kamiya4047/eslint-plugin-pretty-import/releases/tag/v0.0.3

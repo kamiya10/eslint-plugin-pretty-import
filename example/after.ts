@@ -15,9 +15,6 @@ import { z } from 'zod';
 
 import dayjs from 'dayjs';
 
-import type { ComponentType, ReactElement, ReactNode } from 'react';
-import type { ParsedUrlQuery } from 'querystring';
-
 import 'dotenv/config';
 
 import { useEffect, useMemo, useState } from 'react';
@@ -39,7 +36,9 @@ import AppLayout from './layouts/app';
 import Button from './components/button';
 
 import type { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
+import type { ComponentType, ReactElement, ReactNode } from 'react';
 import type { Metadata, ResolvingMetadata } from 'next';
+import type { ParsedUrlQuery } from 'querystring';
 
 import type { RequestPayload, ResponseData } from '@/lib/api';
 import type { User, UserProfile } from '@/lib/api/users';

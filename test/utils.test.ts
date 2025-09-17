@@ -1,7 +1,7 @@
 import { expect, test } from 'bun:test';
 
-import { ImportType, ModuleType } from '../src/types';
 import { analyzeImportType, createSortKey, formatImportStatement, getImportGroupPriority, getModuleType, sortImportSpecifiers } from '../src/utils';
+import { ImportType, ModuleType } from '../src/types';
 
 import type { ImportDeclaration, ImportDefaultSpecifier, ImportNamespaceSpecifier, ImportSpecifier as ESTREEImportSpecifier, Literal } from 'estree';
 

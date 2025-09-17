@@ -167,9 +167,6 @@ import { z } from 'zod';
 
 import dayjs from 'dayjs';
 
-import type { ComponentType, ReactElement, ReactNode } from 'react';
-import type { ParsedUrlQuery } from 'querystring';
-
 import 'dotenv/config';
 
 import { useEffect, useMemo, useState } from 'react';
@@ -191,7 +188,9 @@ import AppLayout from './layouts/app';
 import Button from './components/button';
 
 import type { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
+import type { ComponentType, ReactElement, ReactNode } from 'react';
 import type { Metadata, ResolvingMetadata } from 'next';
+import type { ParsedUrlQuery } from 'querystring';
 
 import type { RequestPayload, ResponseData } from '@/lib/api';
 import type { User, UserProfile } from '@/lib/api/users';
@@ -259,12 +258,13 @@ Absolutely.
 
 1. **Group CSS** - Move all CSS imports to the bottom
 2. **Split by side effects** - JavaScript side effects create section boundaries
+   (type imports are ignored and don't create boundaries)
 3. **Sort sections** - Apply 6-group hierarchy to each section
 4. **Reconstruct** - Reassemble with side effects preserved and CSS at bottom
 
 ## Why This Specific Order Though?
 
-### CSS Goes Last
+### Style & Types Go Last
 
 CSS imports mixed throughout the file disrupt the logical flow:
 
@@ -274,6 +274,11 @@ CSS imports mixed throughout the file disrupt the logical flow:
 
 Since CSS imports don't affect JavaScript execution, they can be grouped together
 at the bottom while preserving their relative order.
+
+Similarly, type imports (`import type`) are compile-time only and don't affect
+runtime execution order. They're sorted freely across side effect boundaries,
+grouped separately from runtime imports to maintain clean separation between
+type definitions and executable code.
 
 > [!NOTE]
 >
