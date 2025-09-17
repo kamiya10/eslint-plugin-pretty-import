@@ -78,11 +78,11 @@ export default [
 import prettyImport from '@kamiya4047/eslint-plugin-pretty-import';
 
 export default [
-  // Recommended (warn severity for sorting rules)
-  prettyImport.configs.recommended,
+  // Warn (warn severity for sorting rules)
+  prettyImport.configs.warn,
   
-  // Or strict (error severity with advanced options)
-  prettyImport.configs.strict,
+  // Or error (error severity with advanced options)
+  prettyImport.configs.error,
 ];
 ```
 
@@ -257,11 +257,11 @@ export default [
 
 ```js
 export default [
-  // Recommended: warn severity for sorting rules
-  prettyImport.configs.recommended,
+  // Warn: warn severity for sorting rules
+  prettyImport.configs.warn,
   
-  // Strict: error severity with additional options
-  prettyImport.configs.strict,
+  // Error: error severity with additional options
+  prettyImport.configs.error,
 ];
 ```
 

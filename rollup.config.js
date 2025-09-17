@@ -16,7 +16,10 @@ export default {
   plugins: [
     json(),
     typescript({
-      tsconfig: './tsconfig.json'
+      tsconfig: './tsconfig.json',
+      declaration: true,
+      declarationDir: 'dist',
+      include: ['src/**/*']
     })
   ]
 };

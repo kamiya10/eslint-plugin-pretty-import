@@ -130,9 +130,14 @@ export default [
   {
     plugins: { 'pretty-import': prettyImport },
     rules: {
-      'pretty-import/separate-type-imports': 'error',  // Runs first
-      'pretty-import/sort-import-groups': 'error',     // Then groups
-      'pretty-import/sort-import-names': 'error'       // Finally sorts names
+      // Runs first
+      'pretty-import/separate-type-imports': 'error',
+
+      // Then groups
+      'pretty-import/sort-import-groups': 'error',
+
+      // Finally sorts names
+      'pretty-import/sort-import-names': 'error'
     }
   }
 ];

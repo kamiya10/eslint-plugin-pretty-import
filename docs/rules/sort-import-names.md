@@ -102,16 +102,21 @@ This rule is designed to work seamlessly with:
 - `separate-type-imports` - Processes inline type imports first
 - `sort-import-groups` - Organizes imports into groups
 
-The recommended configuration uses all three rules:
+The warn/error configurations use all three rules:
 
 ```js
 export default [
   {
     plugins: { 'pretty-import': prettyImport },
     rules: {
-      'pretty-import/separate-type-imports': 'error',  // 1. Convert inline types
-      'pretty-import/sort-import-groups': 'error',     // 2. Group imports  
-      'pretty-import/sort-import-names': 'error'       // 3. Sort within imports
+      // 1. Convert inline types
+      'pretty-import/separate-type-imports': 'error',
+
+      // 2. Group imports  
+      'pretty-import/sort-import-groups': 'error',
+
+      // 3. Sort within imports
+      'pretty-import/sort-import-names': 'error',
     }
   }
 ];

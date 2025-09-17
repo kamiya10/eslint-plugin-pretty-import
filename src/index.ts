@@ -18,21 +18,25 @@ const plugin = {
     'separate-type-imports': separateTypeImports,
   },
 
-  configs: {} as Record<'recommended' | 'strict', Linter.Config>,
+  configs: {} as Record<'warn' | 'error', Linter.Config>,
 };
 
 Object.assign(plugin.configs, {
-  recommended: {
+  warn: {
     plugins: {
       'pretty-import': plugin,
     },
     rules: {
       'pretty-import/separate-type-imports': 'error',
-      'pretty-import/sort-import-groups': 'warn',
+      'pretty-import/sort-import-groups': ['warn', {
+        localPatterns: ['@/', '~/', '#/'],
+        groupStyleImports: true,
+        builtinModulePrefixes: ['node:', 'bun:', 'deno:'],
+      }],
       'pretty-import/sort-import-names': 'warn',
     },
   },
-  strict: {
+  error: {
     plugins: {
       'pretty-import': plugin,
     },

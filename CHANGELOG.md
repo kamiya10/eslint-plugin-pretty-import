@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.4] - 2025-09-17
+
+### Added
+
+- Added common path alias (`@/`, `~/`, `#/`) to shared config presets
+
+### Fixed
+
+- Fixed TypeScript declaration files not being generated in build output
+- Fixed unwanted eslint.config.d.ts being emitted in dist folder
+
 ## [0.0.3] - 2025-09-17
 
 ### Added
@@ -32,7 +43,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Count-based import sorting (more imports get priority)
 - Character priority sorting (special chars → UPPERCASE → lowercase)
 - Full ESLint v9 flat config support
-- Recommended and strict preset configurations
+- Warn and error preset configurations
 - Support for custom local patterns and builtin module prefixes
 
 ### Features
@@ -45,7 +56,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Case-sensitive and case-insensitive sorting options
 - Auto-fixable rules for seamless integration
 
-[unreleased]: https://github.com/kamiya4047/eslint-plugin-pretty-import/compare/v0.0.3...HEAD
+[unreleased]: https://github.com/kamiya4047/eslint-plugin-pretty-import/compare/v0.0.4...HEAD
+[0.0.4]: https://github.com/kamiya4047/eslint-plugin-pretty-import/releases/tag/v0.0.4
 [0.0.3]: https://github.com/kamiya4047/eslint-plugin-pretty-import/releases/tag/v0.0.3
 [0.0.2]: https://github.com/kamiya4047/eslint-plugin-pretty-import/releases/tag/v0.0.2
 [0.0.1]: https://github.com/kamiya4047/eslint-plugin-pretty-import/releases/tag/v0.0.1
