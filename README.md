@@ -1,7 +1,10 @@
 # ESLint Plugin Pretty Import
 
-![GitHub License](https://img.shields.io/github/license/kamiya4047/eslint-plugin-pretty-import)
-![NPM Version](https://img.shields.io/npm/v/%40kamiya4047%2Feslint-plugin-pretty-import)
+[![Build](https://github.com/kamiya4047/eslint-plugin-pretty-import/actions/workflows/build.yml/badge.svg)](https://github.com/kamiya4047/eslint-plugin-pretty-import/actions/workflows/build.yml)
+![GitHub
+License](https://img.shields.io/github/license/kamiya4047/eslint-plugin-pretty-import)
+![NPM
+Version](https://img.shields.io/npm/v/%40kamiya4047%2Feslint-plugin-pretty-import)
 
 The import sorting plugin that does it *my way*. After years of being mildly
 annoyed by other sorting plugins, I finally wrote one that makes imports look
@@ -26,11 +29,10 @@ imports exactly the way I think they should look after years of staring at code.
 It's not based on any standard or committee decision. It's based on what makes
 my brain happy when I open a file.
 
-> [!WARNING]
-> This plugin might break your project. It moves CSS imports to the
+> [!WARNING] This plugin might break your project. It moves CSS imports to the
 > bottom which could affect load order. It uses non-standard sorting that your
-> team might hate. It's definitely not for everyone. Actually, it's probably just
-> for me and the three other people who think like me.
+> team might hate. It's definitely not for everyone. Actually, it's probably
+> just for me and the three other people who think like me.
 
 You might hate it. That's cool! But if you've also been searching for that *just
 right* import order, maybe we share the same aesthetic.
@@ -97,68 +99,111 @@ export default [
 | [`sort-import-names`] | Sorts named imports within import statements | ✅ |
 | [`separate-type-imports`] | Enforces separate `import type` declarations | ✅ |
 
-## Examples
+## Example
 
-### Multiple Named Imports (Count-Based Sorting)
+Example file can be found at [`example`](https://github.com/kamiya4047/eslint-plugin-pretty-import/tree/main/example)
 
-Imports with more specifiers come first within their group:
+<details><summary>Before</summary>
 
-```typescript
-// More imports (3) come before fewer imports (1)
-import { useEffect, useMemo, useState } from 'react';
-import { BehaviorSubject, Observable } from 'rxjs';
+```ts
 import { z } from 'zod';
+import { ReadStream, WriteStream } from 'node:fs';
+import { produce } from 'immer';
+import { TextDecoder, TextEncoder } from 'node:util';
+import { createServer } from 'node:http';
+import dayjs from 'dayjs';
+import type { ReactNode, ReactElement, ComponentType } from 'react';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import { QueryClient, useQuery } from '@tanstack/react-query';
+import { BehaviorSubject, Observable } from 'rxjs';
+import type { ParsedUrlQuery } from 'querystring';
+import { readFile, access, writeFile } from 'node:fs/promises';
+import './styles/global.css';
+import { NextRequest, NextResponse } from 'next/server';
+import './styles/fonts.css';
+import assert from 'node:assert';
+import 'dotenv/config';
+import './styles/components.css';
+import type { RequestPayload, ResponseData } from '@/lib/api';
+import type { User, UserProfile } from '@/lib/api/users';
+import axios from 'axios';
+import { useEffect, useMemo, useState } from 'react';
+import Button from './components/button';
+import { validateUser } from './utils/validation';
+import { formatDate } from '@/utils/date';
+import { LocalStorage, SessionStorage } from '@/utils/storage'
+import type { AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
+import { parseConfig } from './config/parser';
+import type { ResolvingMetadata, Metadata } from 'next';
+import { generateId } from './lib/id';
+import { ApiClient, apiUtils } from './lib/api';
+import { ErrorBoundary, ErrorFallback } from '@/components/error';
+import AuthProvider from '@/providers/auth';
+import AppLayout from './layouts/app';
 ```
 
-### River System with CSS Grouping
+</details>
 
-```typescript
-// Original
-import { utils } from '@/utils';
-import './reset.css';
-import 'polyfill';
-import './theme.css';
-import { Component } from './component';
+<details><summary>After</summary>
 
-// After sorting
-import { utils } from '@/utils';
+```ts
+import { access, readFile, writeFile } from 'node:fs/promises';
+import { ReadStream, WriteStream } from 'node:fs';
+import { TextDecoder, TextEncoder } from 'node:util';
+import { createServer } from 'node:http';
 
-import 'polyfill';  // JavaScript river stays
+import assert from 'node:assert';
+import crypto from 'node:crypto';
+import path from 'node:path';
 
-import { Component } from './component';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { NextRequest, NextResponse } from 'next/server';
+import { QueryClient, useQuery } from '@tanstack/react-query';
+import { produce } from 'immer';
+import { z } from 'zod';
 
-import './reset.css';  // CSS moved to bottom
-import './theme.css';
+import dayjs from 'dayjs';
+
+import type { ComponentType, ReactElement, ReactNode } from 'react';
+import type { ParsedUrlQuery } from 'querystring';
+
+import 'dotenv/config';
+
+import { useEffect, useMemo, useState } from 'react';
+
+import axios from 'axios';
+
+import { ErrorBoundary, ErrorFallback } from '@/components/error';
+import { LocalStorage, SessionStorage } from '@/utils/storage';
+import { formatDate } from '@/utils/date';
+
+import AuthProvider from '@/providers/auth';
+
+import { ApiClient, apiUtils } from './lib/api';
+import { generateId } from './lib/id';
+import { parseConfig } from './config/parser';
+import { validateUser } from './utils/validation';
+
+import AppLayout from './layouts/app';
+import Button from './components/button';
+
+import type { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
+import type { Metadata, ResolvingMetadata } from 'next';
+
+import type { RequestPayload, ResponseData } from '@/lib/api';
+import type { User, UserProfile } from '@/lib/api/users';
+
+import './styles/components.css';
+import './styles/fonts.css';
+import './styles/global.css';
 ```
 
-### Character Priority in Alphabetical Sorting
-
-```typescript
-// Special characters → UPPERCASE → lowercase
-import { $store, AUTH_TOKEN, apiClient } from './constants';
-```
+</details>
 
 ## Configuration Examples
 
-### Next.js Project
-
-```js
-export default [
-  {
-    plugins: { 'pretty-import': prettyImport },
-    rules: {
-      'pretty-import/separate-type-imports': 'error',
-      'pretty-import/sort-import-groups': ['error', {
-        localPatterns: ['@/', '~/'],
-        groupStyleImports: true
-      }],
-      'pretty-import/sort-import-names': 'error'
-    }
-  }
-];
-```
-
-### Monorepo with Custom Aliases
+### Custom Path Aliases
 
 ```js
 export default [
@@ -189,19 +234,19 @@ export default [
 ];
 ```
 
-## The Philosophy (Or: Why These Weird Rules?)
+## The Philosophy
 
-Look, I've stared at a *lot* of import statements. After years of squinting at
-the top of files, certain patterns just started to *feel* right:
+I've stared at a *lot* of import statements. After years of squinting at the top
+of files, certain patterns just started to *feel* right:
 
-- **Built-ins first** - I want to know what runtime stuff you're using before
-  anything else
+- **Built-ins first** - Native/built-in modules should appear at the top of
+   the file
 - **Named import counts** - More imports first creates a visual triangle shape
   when sorted by count: `{a, b, c, d, e}` before `{z}`
 - **CSS at the bottom** - Styles are makeup, logic is bone structure. Bone
   structure first
-- **Rivers preserve flow** - Side effects stay where you put them because
-  breaking things is bad
+- **Rivers preserve flow** - Side effects maintain their original position to
+  preserve JavaScript execution order
 
 Is this objectively correct? No. Is this how imports look best to me?
 Absolutely.
@@ -217,30 +262,35 @@ Absolutely.
 
 ## Why This Specific Order Though?
 
-### CSS Goes Last – Fight Me
+### CSS Goes Last
 
-CSS at the top of a file is like wearing your shirt before your underwear. Sure,
-it works, but it feels wrong:
+CSS imports mixed throughout the file disrupt the logical flow:
 
-- JavaScript = the actual logic that runs
-- CSS = the pretty colors
-- Logic before beauty, always
+- JavaScript = core application logic
+- CSS = visual presentation layer
+- Logic should precede styling
 
-**Note**: This could totally break your styles if you depend on CSS load order.
-But my projects don't, so... 🤷
+Since CSS imports don't affect JavaScript execution, they can be grouped together
+at the bottom while preserving their relative order.
+
+> ![NOET]
+> This could totally break your styles if you depend on CSS load order.
+> But most projects don't, so... 🤷
 
 ### More Imports = More Important
 
 When sorted by import count, it creates a satisfying visual triangle shape:
 
 ```javascript
-import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { combineLatest, fromEvent, map, startWith } from 'rxjs';
-import { clsx, twMerge } from 'tailwind-merge';
-import { z } from 'zod';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { and, eq, exists, sql } from 'drizzle-orm';
+import { create, useStore } from 'zustand'
+import { type } from 'arktype';
+import dayjs from 'dayjs';
 ```
 
-This triangle pattern just *feels* right – more important imports get visual priority.
+This triangle pattern just *feels* right – more important imports get visual
+priority.
 
 ## Compatibility
 
@@ -271,15 +321,17 @@ Guide](.github/CONTRIBUTING.md) for details.
 
 ## License
 
-License can be found at [LICENSE].
+License can be found at [LICENSE](LICENSE).
 
 ## Links
 
 - [Documentation](docs/README.md)
 - [Changelog](CHANGELOG.md)
 - [GitHub Repository](https://github.com/kamiya4047/eslint-plugin-pretty-import)
-- [NPM Package](https://www.npmjs.com/package/@kamiya4047/eslint-plugin-pretty-import)
-- [GitHub Packages](https://github.com/kamiya4047/eslint-plugin-pretty-import/pkgs/npm/eslint-plugin-pretty-import)
+- [NPM
+  Package](https://www.npmjs.com/package/@kamiya4047/eslint-plugin-pretty-import)
+- [GitHub
+  Packages](https://github.com/kamiya4047/eslint-plugin-pretty-import/pkgs/npm/eslint-plugin-pretty-import)
 
 ## Support
 
@@ -287,6 +339,9 @@ If you find this plugin useful, consider supporting its development:
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/kamiya4047)
 
-[`sort-import-groups`]: https://github.com/kamiya4047/eslint-plugin-pretty-import/blob/main/docs/rules/sort-import-groups.md
-[`sort-import-names`]: https://github.com/kamiya4047/eslint-plugin-pretty-import/blob/main/docs/rules/sort-import-names.md
-[`separate-type-imports`]: https://github.com/kamiya4047/eslint-plugin-pretty-import/blob/main/docs/rules/separate-type-imports.md
+[`sort-import-groups`]:
+    https://github.com/kamiya4047/eslint-plugin-pretty-import/blob/main/docs/rules/sort-import-groups.md
+[`sort-import-names`]:
+    https://github.com/kamiya4047/eslint-plugin-pretty-import/blob/main/docs/rules/sort-import-names.md
+[`separate-type-imports`]:
+    https://github.com/kamiya4047/eslint-plugin-pretty-import/blob/main/docs/rules/separate-type-imports.md
