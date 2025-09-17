@@ -32,7 +32,7 @@ export default defineConfig(
   ts.configs.recommendedTypeChecked,
   ts.configs.stylisticTypeChecked,
   plugin.configs.recommended,
-  prettyImport.configs.strict,
+  prettyImport.configs.error,
   stylistic.configs.customize({
     arrowParens: true,
     semi: true,
