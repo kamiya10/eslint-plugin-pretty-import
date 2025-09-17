@@ -1,5 +1,8 @@
 # ESLint Plugin Pretty Import
 
+![GitHub License](https://img.shields.io/github/license/kamiya4047/eslint-plugin-pretty-import)
+![NPM Version](https://img.shields.io/npm/v/%40kamiya4047%2Feslint-plugin-pretty-import)
+
 The import sorting plugin that does it *my way*. After years of being mildly
 annoyed by other sorting plugins, I finally wrote one that makes imports look
 exactly how I want them.
@@ -50,7 +53,7 @@ From GitHub Packages:
 npm install --save-dev @kamiya4047/eslint-plugin-pretty-import --registry=https://npm.pkg.github.com
 ```
 
-### Basic Configuration
+### Configuration
 
 ```js
 // eslint.config.js
@@ -90,90 +93,11 @@ export default [
 
 | Rule | Description | Fixable |
 |------|-------------|---------|
-| [`sort-import-groups`](#rule-sort-import-groups) | Groups and sorts imports with CSS grouping | ✅ |
-| [`sort-import-names`](#rule-sort-import-names) | Sorts named imports within import statements | ✅ |
-| [`separate-type-imports`](#rule-separate-type-imports) | Enforces separate `import type` declarations | ✅ |
+| [`sort-import-groups`] | Groups and sorts imports with CSS grouping | ✅ |
+| [`sort-import-names`] | Sorts named imports within import statements | ✅ |
+| [`separate-type-imports`] | Enforces separate `import type` declarations | ✅ |
 
-## Rule: `sort-import-groups`
-
-The main rule for organizing imports into groups and sorts them.
-
-- Groups are
-- Groups are separated by exactly one blank line
-- No blank lines within groups
-
-### Options
-
-```typescript
-{
-  // Path aliases like ['@/', '~/']
-  localPatterns: string[];
-  
-  // Group CSS at bottom (default: true)
-  groupStyleImports: boolean;
-  
-  // Built-in prefixes (default: ['node:', 'bun:'])
-  builtinModulePrefixes: string[];
-}
-```
-
-## Rule: `sort-import-names`
-
-Sorts the named imports within each import statement.
-
-### Options
-
-```typescript
-{
-  // Case insensitive sorting (default: false)
-  caseInsensitive: boolean;
-}
-```
-
-**Before:**
-
-```typescript
-import { useState, useEffect, useMemo } from 'react';
-```
-
-**After:**
-
-```typescript
-import { useEffect, useMemo, useState } from 'react';
-```
-
-## Rule: `separate-type-imports`
-
-Enforces separation of type imports from value imports. This rule runs **first**
-to prepare imports for the sorting rules.
-
-**Before:**
-
-```typescript
-import { useState, type ComponentProps, type FC } from 'react';
-import { type User, createUser } from './user';
-```
-
-**After:**
-
-```typescript
-import { useState } from 'react';
-import type { ComponentProps, FC } from 'react';
-import { createUser } from './user';
-import type { User } from './user';
-```
-
-### How It Works with Other Rules
-
-This rule is designed to work seamlessly with the sorting rules:
-
-1. **separate-type-imports** runs first and converts inline `type` imports
-2. **sort-import-groups** then organizes everything into proper groups  
-3. **sort-import-names** finally sorts named imports alphabetically
-
-All three rules can be used together without conflicts.
-
-## Advanced Examples
+## Examples
 
 ### Multiple Named Imports (Count-Based Sorting)
 
@@ -362,3 +286,7 @@ License can be found at [LICENSE].
 If you find this plugin useful, consider supporting its development:
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/kamiya4047)
+
+[`sort-import-groups`]: https://github.com/kamiya4047/eslint-plugin-pretty-import/blob/main/docs/rules/sort-import-groups.md
+[`sort-import-names`]: https://github.com/kamiya4047/eslint-plugin-pretty-import/blob/main/docs/rules/sort-import-names.md
+[`separate-type-imports`]: https://github.com/kamiya4047/eslint-plugin-pretty-import/blob/main/docs/rules/separate-type-imports.md
