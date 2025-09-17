@@ -29,7 +29,9 @@ imports exactly the way I think they should look after years of staring at code.
 It's not based on any standard or committee decision. It's based on what makes
 my brain happy when I open a file.
 
-> [!WARNING] This plugin might break your project. It moves CSS imports to the
+> [!WARNING]
+>
+> This plugin might break your project. It moves CSS imports to the
 > bottom which could affect load order. It uses non-standard sorting that your
 > team might hate. It's definitely not for everyone. Actually, it's probably
 > just for me and the three other people who think like me.
@@ -273,7 +275,8 @@ CSS imports mixed throughout the file disrupt the logical flow:
 Since CSS imports don't affect JavaScript execution, they can be grouped together
 at the bottom while preserving their relative order.
 
-> ![NOET]
+> [!NOTE]
+>
 > This could totally break your styles if you depend on CSS load order.
 > But most projects don't, so... 🤷
 
