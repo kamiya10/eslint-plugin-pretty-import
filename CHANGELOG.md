@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.2]
+
 ### Changed
 
 - Updated package scope and username
@@ -37,5 +39,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Case-sensitive and case-insensitive sorting options
 - Auto-fixable rules for seamless integration
 
-[unreleased]: https://github.com/kamiya4047/eslint-plugin-pretty-import/compare/v0.0.1...HEAD
+[unreleased]: https://github.com/kamiya4047/eslint-plugin-pretty-import/compare/v0.0.2...HEAD
+[0.0.2]: https://github.com/kamiya4047/eslint-plugin-pretty-import/releases/tag/v0.0.2
 [0.0.1]: https://github.com/kamiya4047/eslint-plugin-pretty-import/releases/tag/v0.0.1
