@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.6] - 2025-09-18
+
+### Changed
+
+- Changed to use the MIT license.
+
 ## [0.1.5] - 2025-09-17
 
 ### Fixed
@@ -75,7 +81,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Case-sensitive and case-insensitive sorting options
 - Auto-fixable rules for seamless integration
 
-[unreleased]: https://github.com/kamiya4047/eslint-plugin-pretty-import/compare/v0.1.5...HEAD
+[unreleased]: https://github.com/kamiya4047/eslint-plugin-pretty-import/compare/v0.1.6...HEAD
+[0.1.6]: https://github.com/kamiya4047/eslint-plugin-pretty-import/releases/tag/v0.1.6
 [0.1.5]: https://github.com/kamiya4047/eslint-plugin-pretty-import/releases/tag/v0.1.5
 [0.1.4]: https://github.com/kamiya4047/eslint-plugin-pretty-import/releases/tag/v0.1.4
 [0.1.1]: https://github.com/kamiya4047/eslint-plugin-pretty-import/releases/tag/v0.1.1
